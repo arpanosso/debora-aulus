@@ -17,3 +17,91 @@ knitr::opts_chunk$set(
 # Análise Doutorado Débora
 
 ## Biorigin
+
+### Carregando pacotes
+```{r}
+library(tidyverse)
+library(ExpDes.pt)
+library(lme4)
+library(agricolae)
+library(readxl)
+library(janitor)
+library(MASS)
+library(car)
+```
+
+### Entrada de dados
+```{r}
+## Lendo os dados
+dados <- read_xlsx("data/dados_01.xlsx",
+          sheet = "Análises Fezes") %>% 
+  clean_names() %>% 
+  mutate(
+    dose = case_when(
+      tr == 1 ~ 0,
+      tr == 2 | tr == 5 ~ 0.2,
+      tr == 3 | tr == 6 ~ 0.4,
+      tr == 4 | tr == 7 ~ 0.8
+    ),
+    ingrediente = ifelse(tr==1,"PCL",
+                         ifelse(tr > 1 & tr<=4 ,"PCL","PCLs"))
+  )
+
+#extraindo o controle
+da <- dados %>% filter(dose==0) %>% 
+  mutate(
+    ingrediente="PCLs"
+  )
+
+#duplicando o controle
+dados <- rbind(dados,da)
+```
+
+
+### Vislumbre
+```{r}
+glimpse(dados)
+```
+## Normalidade de Homocedasticidade
+
+```{r}
+variaveis <- dados %>% 
+  dplyr::select(mm:ph,-score)
+
+for(i in seq_along(variaveis)){
+  nome <- names(variaveis[i])
+  print("====================================")
+  print(str_to_upper(nome))
+  print("====================================")
+  
+  daux <- variaveis[i]
+  names(daux) <- "y" ### <-
+  y <- daux$y ### <- 
+  bl <- dados$bl %>% as_factor()
+  tr <- dados$tr %>% as_factor()
+  
+  mod <- aov(y ~ tr + bl)
+  rs <- mod %>% rstudent()
+  hist(rs, main = paste("Resíduo ", str_to_upper(nome)) )
+  
+  print(shapiro.test(rs))
+  
+  plot(y ~ tr)
+  
+  boxcox(mod,seq(-10,10,.5))
+  cat("\n")
+
+}
+
+```
+
+
+
+
+
+
+
+
+
+
+
