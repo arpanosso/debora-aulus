@@ -44,7 +44,14 @@ dados <- read_xlsx("data/dados_01.xlsx",
       tr == 4 | tr == 7 ~ 0.8
     ),
     ingrediente = ifelse(tr==1,"PCL",
-                         ifelse(tr > 1 & tr<=4 ,"PCL","PCLs"))
+                         ifelse(tr > 1 & tr<=4 ,"PCL","PCLs")),
+    
+    # transformação dos dados
+    mo = log(mo),
+    fibra_in = log(fibra_in),
+    ee_in = log(ee_in),
+    amido_in = log(amido_in),
+    ph=ph^(-2)
   )
 
 #extraindo o controle
@@ -89,6 +96,8 @@ for(i in seq_along(variaveis)){
   plot(y ~ tr)
   
   boxcox(mod,seq(-10,10,.5))
+  abline(v=1,col="red",lty=2)
+  
   preditos <- predict(mod)
   plot(preditos,rs,
        main=paste("Estudos de Outliers: ", str_to_upper(nome)))
@@ -99,7 +108,40 @@ for(i in seq_along(variaveis)){
 
 
 
+## Análise de variância
 
+```{r}
+for(i in seq_along(variaveis)){
+  nome <- names(variaveis[i])
+  print("====================================")
+  print(str_to_upper(nome))
+  print("====================================")
+  
+  daux <- variaveis[i]
+  names(daux) <- "y" ### <-
+  y <- daux$y ### <- 
+  ingred <- dados$ingrediente %>% as_factor()
+  dose <- dados$dose
+  bl <- dados$bl %>% as_factor()
+  
+  fat2.dbc(ingred,dose,bl,y,quali=c(TRUE,FALSE),
+           fac.names = c("Ingred.","Dose"))
+  
+  my_plot<-tibble(dose,ingred,y) %>%
+    group_by(dose,ingred) %>% 
+    summarise(y=mean(y)) %>% 
+    ggplot(aes(x=dose,y=y,color=ingred)) +
+    geom_point(size=3) +
+    geom_line() +
+    #facet_wrap(~ingred,nrow = 2)+
+    theme_bw() +
+    labs(y=str_to_upper(nome),x="DOSE",color="Ingrediente")+
+    theme(legend.position = "top")+
+    scale_color_manual(values = c("aquamarine4","red")) 
+  print(my_plot)
+  cat("\n")
+}
+```
 
 
 
