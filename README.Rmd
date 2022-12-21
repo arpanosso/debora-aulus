@@ -51,7 +51,8 @@ dados <- read_xlsx("data/dados_01.xlsx",
     fibra_in = log(fibra_in),
     ee_in = log(ee_in),
     amido_in = log(amido_in),
-    ph=ph^(-2)
+    ph=ph^(-2),
+    am=am^2
   )
 
 #extraindo o controle
