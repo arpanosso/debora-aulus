@@ -112,8 +112,11 @@ for(i in seq_along(variaveis)){
   plot(y ~ tr)
   
   boxcox(mod,seq(-10,10,.5))
+  preditos <- predict(mod)
+  plot(preditos,rs,
+       main=paste("Estudos de Outliers: ", str_to_upper(nome)))
+  abline(h=c(3,-3),col="red")
   cat("\n")
-
 }
 #> [1] "===================================="
 #> [1] "MM"
@@ -128,14 +131,14 @@ for(i in seq_along(variaveis)){
     #> data:  rs
     #> W = 0.95277, p-value = 0.0157
 
-![](README_files/figure-gfm/unnamed-chunk-5-2.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-3.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-2.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-3.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-4.png)<!-- -->
 
     #> 
     #> [1] "===================================="
     #> [1] "MO"
     #> [1] "===================================="
 
-![](README_files/figure-gfm/unnamed-chunk-5-4.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-5.png)<!-- -->
 
     #> 
     #>  Shapiro-Wilk normality test
@@ -143,14 +146,14 @@ for(i in seq_along(variaveis)){
     #> data:  rs
     #> W = 0.95277, p-value = 0.0157
 
-![](README_files/figure-gfm/unnamed-chunk-5-5.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-6.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-6.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-7.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-8.png)<!-- -->
 
     #> 
     #> [1] "===================================="
     #> [1] "EE"
     #> [1] "===================================="
 
-![](README_files/figure-gfm/unnamed-chunk-5-7.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-9.png)<!-- -->
 
     #> 
     #>  Shapiro-Wilk normality test
@@ -158,26 +161,11 @@ for(i in seq_along(variaveis)){
     #> data:  rs
     #> W = 0.96971, p-value = 0.1169
 
-![](README_files/figure-gfm/unnamed-chunk-5-8.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-9.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-10.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-11.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-12.png)<!-- -->
 
     #> 
     #> [1] "===================================="
     #> [1] "PB"
-    #> [1] "===================================="
-
-![](README_files/figure-gfm/unnamed-chunk-5-10.png)<!-- -->
-
-    #> 
-    #>  Shapiro-Wilk normality test
-    #> 
-    #> data:  rs
-    #> W = 0.95028, p-value = 0.01181
-
-![](README_files/figure-gfm/unnamed-chunk-5-11.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-12.png)<!-- -->
-
-    #> 
-    #> [1] "===================================="
-    #> [1] "AM"
     #> [1] "===================================="
 
 ![](README_files/figure-gfm/unnamed-chunk-5-13.png)<!-- -->
@@ -186,16 +174,31 @@ for(i in seq_along(variaveis)){
     #>  Shapiro-Wilk normality test
     #> 
     #> data:  rs
+    #> W = 0.95028, p-value = 0.01181
+
+![](README_files/figure-gfm/unnamed-chunk-5-14.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-15.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-16.png)<!-- -->
+
+    #> 
+    #> [1] "===================================="
+    #> [1] "AM"
+    #> [1] "===================================="
+
+![](README_files/figure-gfm/unnamed-chunk-5-17.png)<!-- -->
+
+    #> 
+    #>  Shapiro-Wilk normality test
+    #> 
+    #> data:  rs
     #> W = 0.85449, p-value = 2.254e-06
 
-![](README_files/figure-gfm/unnamed-chunk-5-14.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-15.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-18.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-19.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-20.png)<!-- -->
 
     #> 
     #> [1] "===================================="
     #> [1] "FB"
     #> [1] "===================================="
 
-![](README_files/figure-gfm/unnamed-chunk-5-16.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-21.png)<!-- -->
 
     #> 
     #>  Shapiro-Wilk normality test
@@ -203,41 +206,11 @@ for(i in seq_along(variaveis)){
     #> data:  rs
     #> W = 0.96898, p-value = 0.107
 
-![](README_files/figure-gfm/unnamed-chunk-5-17.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-18.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-22.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-23.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-24.png)<!-- -->
 
     #> 
     #> [1] "===================================="
     #> [1] "EB"
-    #> [1] "===================================="
-
-![](README_files/figure-gfm/unnamed-chunk-5-19.png)<!-- -->
-
-    #> 
-    #>  Shapiro-Wilk normality test
-    #> 
-    #> data:  rs
-    #> W = 0.96403, p-value = 0.05902
-
-![](README_files/figure-gfm/unnamed-chunk-5-20.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-21.png)<!-- -->
-
-    #> 
-    #> [1] "===================================="
-    #> [1] "D_MS"
-    #> [1] "===================================="
-
-![](README_files/figure-gfm/unnamed-chunk-5-22.png)<!-- -->
-
-    #> 
-    #>  Shapiro-Wilk normality test
-    #> 
-    #> data:  rs
-    #> W = 0.96972, p-value = 0.1169
-
-![](README_files/figure-gfm/unnamed-chunk-5-23.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-24.png)<!-- -->
-
-    #> 
-    #> [1] "===================================="
-    #> [1] "D_MM"
     #> [1] "===================================="
 
 ![](README_files/figure-gfm/unnamed-chunk-5-25.png)<!-- -->
@@ -246,58 +219,43 @@ for(i in seq_along(variaveis)){
     #>  Shapiro-Wilk normality test
     #> 
     #> data:  rs
+    #> W = 0.96403, p-value = 0.05902
+
+![](README_files/figure-gfm/unnamed-chunk-5-26.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-27.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-28.png)<!-- -->
+
+    #> 
+    #> [1] "===================================="
+    #> [1] "D_MS"
+    #> [1] "===================================="
+
+![](README_files/figure-gfm/unnamed-chunk-5-29.png)<!-- -->
+
+    #> 
+    #>  Shapiro-Wilk normality test
+    #> 
+    #> data:  rs
+    #> W = 0.96972, p-value = 0.1169
+
+![](README_files/figure-gfm/unnamed-chunk-5-30.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-31.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-32.png)<!-- -->
+
+    #> 
+    #> [1] "===================================="
+    #> [1] "D_MM"
+    #> [1] "===================================="
+
+![](README_files/figure-gfm/unnamed-chunk-5-33.png)<!-- -->
+
+    #> 
+    #>  Shapiro-Wilk normality test
+    #> 
+    #> data:  rs
     #> W = 0.94957, p-value = 0.0109
 
-![](README_files/figure-gfm/unnamed-chunk-5-26.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-27.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-34.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-35.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-36.png)<!-- -->
 
     #> 
     #> [1] "===================================="
     #> [1] "D_MO"
-    #> [1] "===================================="
-
-![](README_files/figure-gfm/unnamed-chunk-5-28.png)<!-- -->
-
-    #> 
-    #>  Shapiro-Wilk normality test
-    #> 
-    #> data:  rs
-    #> W = 0.97563, p-value = 0.2356
-
-![](README_files/figure-gfm/unnamed-chunk-5-29.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-30.png)<!-- -->
-
-    #> 
-    #> [1] "===================================="
-    #> [1] "D_EE"
-    #> [1] "===================================="
-
-![](README_files/figure-gfm/unnamed-chunk-5-31.png)<!-- -->
-
-    #> 
-    #>  Shapiro-Wilk normality test
-    #> 
-    #> data:  rs
-    #> W = 0.968, p-value = 0.09512
-
-![](README_files/figure-gfm/unnamed-chunk-5-32.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-33.png)<!-- -->
-
-    #> 
-    #> [1] "===================================="
-    #> [1] "D_PB"
-    #> [1] "===================================="
-
-![](README_files/figure-gfm/unnamed-chunk-5-34.png)<!-- -->
-
-    #> 
-    #>  Shapiro-Wilk normality test
-    #> 
-    #> data:  rs
-    #> W = 0.97742, p-value = 0.2892
-
-![](README_files/figure-gfm/unnamed-chunk-5-35.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-36.png)<!-- -->
-
-    #> 
-    #> [1] "===================================="
-    #> [1] "D_AM"
     #> [1] "===================================="
 
 ![](README_files/figure-gfm/unnamed-chunk-5-37.png)<!-- -->
@@ -306,58 +264,43 @@ for(i in seq_along(variaveis)){
     #>  Shapiro-Wilk normality test
     #> 
     #> data:  rs
-    #> W = 0.87891, p-value = 1.401e-05
+    #> W = 0.97563, p-value = 0.2356
 
-![](README_files/figure-gfm/unnamed-chunk-5-38.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-39.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-38.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-39.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-40.png)<!-- -->
 
     #> 
     #> [1] "===================================="
-    #> [1] "D_FB"
+    #> [1] "D_EE"
     #> [1] "===================================="
 
-![](README_files/figure-gfm/unnamed-chunk-5-40.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-41.png)<!-- -->
 
     #> 
     #>  Shapiro-Wilk normality test
     #> 
     #> data:  rs
-    #> W = 0.9782, p-value = 0.3157
+    #> W = 0.968, p-value = 0.09512
 
-![](README_files/figure-gfm/unnamed-chunk-5-41.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-42.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-42.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-43.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-44.png)<!-- -->
 
     #> 
     #> [1] "===================================="
-    #> [1] "D_EB"
+    #> [1] "D_PB"
     #> [1] "===================================="
 
-![](README_files/figure-gfm/unnamed-chunk-5-43.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-45.png)<!-- -->
 
     #> 
     #>  Shapiro-Wilk normality test
     #> 
     #> data:  rs
-    #> W = 0.97609, p-value = 0.2484
+    #> W = 0.97742, p-value = 0.2892
 
-![](README_files/figure-gfm/unnamed-chunk-5-44.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-45.png)<!-- -->
-
-    #> 
-    #> [1] "===================================="
-    #> [1] "MS_IN"
-    #> [1] "===================================="
-
-![](README_files/figure-gfm/unnamed-chunk-5-46.png)<!-- -->
-
-    #> 
-    #>  Shapiro-Wilk normality test
-    #> 
-    #> data:  rs
-    #> W = 0.96103, p-value = 0.04127
-
-![](README_files/figure-gfm/unnamed-chunk-5-47.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-48.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-46.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-47.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-48.png)<!-- -->
 
     #> 
     #> [1] "===================================="
-    #> [1] "MO_IN"
+    #> [1] "D_AM"
     #> [1] "===================================="
 
 ![](README_files/figure-gfm/unnamed-chunk-5-49.png)<!-- -->
@@ -366,58 +309,43 @@ for(i in seq_along(variaveis)){
     #>  Shapiro-Wilk normality test
     #> 
     #> data:  rs
-    #> W = 0.96099, p-value = 0.04106
+    #> W = 0.87891, p-value = 1.401e-05
 
-![](README_files/figure-gfm/unnamed-chunk-5-50.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-51.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-50.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-51.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-52.png)<!-- -->
 
     #> 
     #> [1] "===================================="
-    #> [1] "PB_IN"
+    #> [1] "D_FB"
     #> [1] "===================================="
 
-![](README_files/figure-gfm/unnamed-chunk-5-52.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-53.png)<!-- -->
 
     #> 
     #>  Shapiro-Wilk normality test
     #> 
     #> data:  rs
-    #> W = 0.9785, p-value = 0.3266
+    #> W = 0.9782, p-value = 0.3157
 
-![](README_files/figure-gfm/unnamed-chunk-5-53.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-54.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-54.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-55.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-56.png)<!-- -->
 
     #> 
     #> [1] "===================================="
-    #> [1] "FIBRA_IN"
+    #> [1] "D_EB"
     #> [1] "===================================="
 
-![](README_files/figure-gfm/unnamed-chunk-5-55.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-57.png)<!-- -->
 
     #> 
     #>  Shapiro-Wilk normality test
     #> 
     #> data:  rs
-    #> W = 0.94707, p-value = 0.008231
+    #> W = 0.97609, p-value = 0.2484
 
-![](README_files/figure-gfm/unnamed-chunk-5-56.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-57.png)<!-- -->
-
-    #> 
-    #> [1] "===================================="
-    #> [1] "EE_IN"
-    #> [1] "===================================="
-
-![](README_files/figure-gfm/unnamed-chunk-5-58.png)<!-- -->
-
-    #> 
-    #>  Shapiro-Wilk normality test
-    #> 
-    #> data:  rs
-    #> W = 0.9621, p-value = 0.04687
-
-![](README_files/figure-gfm/unnamed-chunk-5-59.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-60.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-58.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-59.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-60.png)<!-- -->
 
     #> 
     #> [1] "===================================="
-    #> [1] "AMIDO_IN"
+    #> [1] "MS_IN"
     #> [1] "===================================="
 
 ![](README_files/figure-gfm/unnamed-chunk-5-61.png)<!-- -->
@@ -426,58 +354,43 @@ for(i in seq_along(variaveis)){
     #>  Shapiro-Wilk normality test
     #> 
     #> data:  rs
-    #> W = 0.76412, p-value = 8.929e-09
+    #> W = 0.96103, p-value = 0.04127
 
-![](README_files/figure-gfm/unnamed-chunk-5-62.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-63.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-62.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-63.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-64.png)<!-- -->
 
     #> 
     #> [1] "===================================="
-    #> [1] "FEZESMN"
+    #> [1] "MO_IN"
     #> [1] "===================================="
 
-![](README_files/figure-gfm/unnamed-chunk-5-64.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-65.png)<!-- -->
 
     #> 
     #>  Shapiro-Wilk normality test
     #> 
     #> data:  rs
-    #> W = 0.95491, p-value = 0.02011
+    #> W = 0.96099, p-value = 0.04106
 
-![](README_files/figure-gfm/unnamed-chunk-5-65.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-66.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-66.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-67.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-68.png)<!-- -->
 
     #> 
     #> [1] "===================================="
-    #> [1] "FEZESMS"
+    #> [1] "PB_IN"
     #> [1] "===================================="
 
-![](README_files/figure-gfm/unnamed-chunk-5-67.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-69.png)<!-- -->
 
     #> 
     #>  Shapiro-Wilk normality test
     #> 
     #> data:  rs
-    #> W = 0.97881, p-value = 0.3381
+    #> W = 0.9785, p-value = 0.3266
 
-![](README_files/figure-gfm/unnamed-chunk-5-68.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-69.png)<!-- -->
-
-    #> 
-    #> [1] "===================================="
-    #> [1] "MSFEZES"
-    #> [1] "===================================="
-
-![](README_files/figure-gfm/unnamed-chunk-5-70.png)<!-- -->
-
-    #> 
-    #>  Shapiro-Wilk normality test
-    #> 
-    #> data:  rs
-    #> W = 0.96968, p-value = 0.1164
-
-![](README_files/figure-gfm/unnamed-chunk-5-71.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-72.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-70.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-71.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-72.png)<!-- -->
 
     #> 
     #> [1] "===================================="
-    #> [1] "PH"
+    #> [1] "FIBRA_IN"
     #> [1] "===================================="
 
 ![](README_files/figure-gfm/unnamed-chunk-5-73.png)<!-- -->
@@ -486,6 +399,96 @@ for(i in seq_along(variaveis)){
     #>  Shapiro-Wilk normality test
     #> 
     #> data:  rs
+    #> W = 0.94707, p-value = 0.008231
+
+![](README_files/figure-gfm/unnamed-chunk-5-74.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-75.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-76.png)<!-- -->
+
+    #> 
+    #> [1] "===================================="
+    #> [1] "EE_IN"
+    #> [1] "===================================="
+
+![](README_files/figure-gfm/unnamed-chunk-5-77.png)<!-- -->
+
+    #> 
+    #>  Shapiro-Wilk normality test
+    #> 
+    #> data:  rs
+    #> W = 0.9621, p-value = 0.04687
+
+![](README_files/figure-gfm/unnamed-chunk-5-78.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-79.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-80.png)<!-- -->
+
+    #> 
+    #> [1] "===================================="
+    #> [1] "AMIDO_IN"
+    #> [1] "===================================="
+
+![](README_files/figure-gfm/unnamed-chunk-5-81.png)<!-- -->
+
+    #> 
+    #>  Shapiro-Wilk normality test
+    #> 
+    #> data:  rs
+    #> W = 0.76412, p-value = 8.929e-09
+
+![](README_files/figure-gfm/unnamed-chunk-5-82.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-83.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-84.png)<!-- -->
+
+    #> 
+    #> [1] "===================================="
+    #> [1] "FEZESMN"
+    #> [1] "===================================="
+
+![](README_files/figure-gfm/unnamed-chunk-5-85.png)<!-- -->
+
+    #> 
+    #>  Shapiro-Wilk normality test
+    #> 
+    #> data:  rs
+    #> W = 0.95491, p-value = 0.02011
+
+![](README_files/figure-gfm/unnamed-chunk-5-86.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-87.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-88.png)<!-- -->
+
+    #> 
+    #> [1] "===================================="
+    #> [1] "FEZESMS"
+    #> [1] "===================================="
+
+![](README_files/figure-gfm/unnamed-chunk-5-89.png)<!-- -->
+
+    #> 
+    #>  Shapiro-Wilk normality test
+    #> 
+    #> data:  rs
+    #> W = 0.97881, p-value = 0.3381
+
+![](README_files/figure-gfm/unnamed-chunk-5-90.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-91.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-92.png)<!-- -->
+
+    #> 
+    #> [1] "===================================="
+    #> [1] "MSFEZES"
+    #> [1] "===================================="
+
+![](README_files/figure-gfm/unnamed-chunk-5-93.png)<!-- -->
+
+    #> 
+    #>  Shapiro-Wilk normality test
+    #> 
+    #> data:  rs
+    #> W = 0.96968, p-value = 0.1164
+
+![](README_files/figure-gfm/unnamed-chunk-5-94.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-95.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-96.png)<!-- -->
+
+    #> 
+    #> [1] "===================================="
+    #> [1] "PH"
+    #> [1] "===================================="
+
+![](README_files/figure-gfm/unnamed-chunk-5-97.png)<!-- -->
+
+    #> 
+    #>  Shapiro-Wilk normality test
+    #> 
+    #> data:  rs
     #> W = 0.96124, p-value = 0.04232
 
-![](README_files/figure-gfm/unnamed-chunk-5-74.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-75.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-98.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-99.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-5-100.png)<!-- -->

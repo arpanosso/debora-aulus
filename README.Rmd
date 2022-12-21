@@ -89,10 +89,12 @@ for(i in seq_along(variaveis)){
   plot(y ~ tr)
   
   boxcox(mod,seq(-10,10,.5))
+  preditos <- predict(mod)
+  plot(preditos,rs,
+       main=paste("Estudos de Outliers: ", str_to_upper(nome)))
+  abline(h=c(3,-3),col="red")
   cat("\n")
-
 }
-
 ```
 
 
