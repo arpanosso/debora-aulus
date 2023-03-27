@@ -76,35 +76,35 @@ glimpse(dados)
 variaveis <- dados %>% 
   dplyr::select(mm:ph,-score)
 
-for(i in seq_along(variaveis)){
-  nome <- names(variaveis[i])
-  print("====================================")
-  print(str_to_upper(nome))
-  print("====================================")
-  
-  daux <- variaveis[i]
-  names(daux) <- "y" ### <-
-  y <- daux$y ### <- 
-  bl <- dados$bl %>% as_factor()
-  tr <- dados$tr %>% as_factor()
-  
-  mod <- aov(y ~ tr + bl)
-  rs <- mod %>% rstudent()
-  hist(rs, main = paste("Resíduo ", str_to_upper(nome)) )
-  
-  print(shapiro.test(rs))
-  
-  plot(y ~ tr)
-  
-  boxcox(mod,seq(-10,10,.5))
-  abline(v=1,col="red",lty=2)
-  
-  preditos <- predict(mod)
-  plot(preditos,rs,
-       main=paste("Estudos de Outliers: ", str_to_upper(nome)))
-  abline(h=c(3,-3),col="red")
-  cat("\n")
-}
+# for(i in seq_along(variaveis)){
+#   nome <- names(variaveis[i])
+#   print("====================================")
+#   print(str_to_upper(nome))
+#   print("====================================")
+#   
+#   daux <- variaveis[i]
+#   names(daux) <- "y" ### <-
+#   y <- daux$y ### <- 
+#   bl <- dados$bl %>% as_factor()
+#   tr <- dados$tr %>% as_factor()
+#   
+#   mod <- aov(y ~ tr + bl)
+#   rs <- mod %>% rstudent()
+#   hist(rs, main = paste("Resíduo ", str_to_upper(nome)) )
+#   
+#   print(shapiro.test(rs))
+#   
+#   plot(y ~ tr)
+#   
+#   boxcox(mod,seq(-10,10,.5))
+#   abline(v=1,col="red",lty=2)
+#   
+#   preditos <- predict(mod)
+#   plot(preditos,rs,
+#        main=paste("Estudos de Outliers: ", str_to_upper(nome)))
+#   abline(h=c(3,-3),col="red")
+#   cat("\n")
+# }
 ```
 
 
