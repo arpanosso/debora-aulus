@@ -78,6 +78,43 @@ dados <- rbind(dados,da)
 variaveis <- dados %>% 
   dplyr::select(mm:tripta_mg_100,-score)
 
+for(i in seq_along(variaveis)){
+  nome <- names(variaveis[i])
+  print("====================================")
+  print(str_to_upper(nome))
+  print("====================================")
+
+  daux <- variaveis[i]
+  names(daux) <- "y" ### <-
+  y <- daux$y ### <-
+  bl <- dados$bl %>% as_factor()
+  tr <- dados$tr %>% as_factor()
+
+  mod <- aov(y ~ tr + bl)
+  rs <- mod %>% rstudent()
+  hist(rs, main = paste("Resíduo ", str_to_upper(nome)) )
+
+  print(shapiro.test(rs))
+
+  plot(y ~ tr)
+  filtro <- y != 0
+  mod_box <- aov(y[filtro] ~ tr[filtro] + bl[filtro])
+  boxcox(mod_box,seq(-10,10,.5))
+  abline(v=1,col="red",lty=2)
+  
+  preditos <- predict(mod)
+  plot(preditos,rs,
+       main=paste("Estudos de Outliers: ", str_to_upper(nome)))
+  abline(h=c(3,-3),col="red")
+  cat("\n")
+}
+```
+
+
+
+## Análise de variância
+
+```{r}
 # for(i in seq_along(variaveis)){
 #   nome <- names(variaveis[i])
 #   print("====================================")
@@ -87,63 +124,27 @@ variaveis <- dados %>%
 #   daux <- variaveis[i]
 #   names(daux) <- "y" ### <-
 #   y <- daux$y ### <- 
+#   ingred <- dados$ingrediente %>% as_factor()
+#   dose <- dados$dose
 #   bl <- dados$bl %>% as_factor()
-#   tr <- dados$tr %>% as_factor()
 #   
-#   mod <- aov(y ~ tr + bl)
-#   rs <- mod %>% rstudent()
-#   hist(rs, main = paste("Resíduo ", str_to_upper(nome)) )
+#   fat2.dbc(ingred,dose,bl,y,quali=c(TRUE,FALSE),
+#            fac.names = c("Ingred.","Dose"))
 #   
-#   print(shapiro.test(rs))
-#   
-#   plot(y ~ tr)
-#   
-#   boxcox(mod,seq(-10,10,.5))
-#   abline(v=1,col="red",lty=2)
-#   
-#   preditos <- predict(mod)
-#   plot(preditos,rs,
-#        main=paste("Estudos de Outliers: ", str_to_upper(nome)))
-#   abline(h=c(3,-3),col="red")
+#   my_plot<-tibble(dose,ingred,y) %>%
+#     group_by(dose,ingred) %>% 
+#     summarise(y=mean(y)) %>% 
+#     ggplot(aes(x=dose,y=y,color=ingred)) +
+#     geom_point(size=3) +
+#     geom_line() +
+#     #facet_wrap(~ingred,nrow = 2)+
+#     theme_bw() +
+#     labs(y=str_to_upper(nome),x="DOSE",color="Ingrediente")+
+#     theme(legend.position = "top")+
+#     scale_color_manual(values = c("aquamarine4","red")) 
+#   print(my_plot)
 #   cat("\n")
 # }
-```
-
-
-
-## Análise de variância
-
-```{r}
-for(i in seq_along(variaveis)){
-  nome <- names(variaveis[i])
-  print("====================================")
-  print(str_to_upper(nome))
-  print("====================================")
-  
-  daux <- variaveis[i]
-  names(daux) <- "y" ### <-
-  y <- daux$y ### <- 
-  ingred <- dados$ingrediente %>% as_factor()
-  dose <- dados$dose
-  bl <- dados$bl %>% as_factor()
-  
-  fat2.dbc(ingred,dose,bl,y,quali=c(TRUE,FALSE),
-           fac.names = c("Ingred.","Dose"))
-  
-  my_plot<-tibble(dose,ingred,y) %>%
-    group_by(dose,ingred) %>% 
-    summarise(y=mean(y)) %>% 
-    ggplot(aes(x=dose,y=y,color=ingred)) +
-    geom_point(size=3) +
-    geom_line() +
-    #facet_wrap(~ingred,nrow = 2)+
-    theme_bw() +
-    labs(y=str_to_upper(nome),x="DOSE",color="Ingrediente")+
-    theme(legend.position = "top")+
-    scale_color_manual(values = c("aquamarine4","red")) 
-  print(my_plot)
-  cat("\n")
-}
 ```
 
 
