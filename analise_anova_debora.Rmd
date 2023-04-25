@@ -36,7 +36,8 @@ library(car)
 ```{r}
 ## Lendo os dados
 dados <- read_xlsx("data/dados_01.xlsx",
-          sheet = "Análises Fezes") %>% 
+          sheet = "Análises Fezes",
+          na=".") %>% 
   clean_names() %>% 
   mutate(
     dose = case_when(
@@ -49,12 +50,12 @@ dados <- read_xlsx("data/dados_01.xlsx",
                          ifelse(tr > 1 & tr<=4 ,"PCL","PCLs")),
     
     # transformação dos dados
-    mo = log(mo),
-    fibra_in = log(fibra_in),
-    ee_in = log(ee_in),
-    amido_in = log(amido_in),
-    ph=ph^(-2),
-    am=am^2
+    # mo = log(mo),
+    # fibra_in = log(fibra_in),
+    # ee_in = log(ee_in),
+    # amido_in = log(amido_in),
+    # ph=ph^(-2),
+    # am=am^2
   )
 
 #extraindo o controle
@@ -76,7 +77,7 @@ dados <- rbind(dados,da)
 
 ```{r}
 variaveis <- dados %>% 
-  dplyr::select(mm:tripta_mg_100,-score)
+  dplyr::select(mm:tripta_63,-score)
 
 for(i in seq_along(variaveis)){
   nome <- names(variaveis[i])
@@ -86,10 +87,16 @@ for(i in seq_along(variaveis)){
 
   daux <- variaveis[i]
   names(daux) <- "y" ### <-
+  
   y <- daux$y ### <-
-  bl <- dados$bl %>% as_factor()
-  tr <- dados$tr %>% as_factor()
-
+  daux$bl <- dados$bl %>% as_factor()
+  daux$tr <- dados$tr %>% as_factor()
+  
+  daux <- daux %>%  drop_na()
+  y <- daux$y ### <-
+  bl <- daux$bl %>% as_factor()
+  tr <- daux$tr %>% as_factor()
+  
   mod <- aov(y ~ tr + bl)
   rs <- mod %>% rstudent()
   hist(rs, main = paste("Resíduo ", str_to_upper(nome)) )
